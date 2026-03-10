@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from datetime import datetime
+import os
 
 TOKEN = "MTM3MDYzMDA2NDg1MjU3MDE2Mg.Gzb6wL.iEe-419I_NYzpvYmvajlsyqRJblycyllXd3KUw"
 
@@ -14,6 +15,11 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
+
+# ============================
+# TOKEN
+# ============================
+TOKEN = os.getenv("TOKEN")  # coloque TOKEN no .env
 
 SITUACOES = [
     "Efetivo",
@@ -622,4 +628,10 @@ async def on_ready():
     print(f"Bot online: {bot.user}")
 
 
-bot.run(TOKEN)
+# ============================
+# RUN
+# ============================
+if not TOKEN:
+    print("ERRO: TOKEN não definido.")
+else:
+    bot.run(TOKEN)
