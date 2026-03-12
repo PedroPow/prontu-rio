@@ -46,6 +46,7 @@ PATENTES = [
 MEDALHAS = [
     ("MEDALHA DE ROTA", "<:medalhaderota:1480792877192708290>"),
     ("CENTENARIO DE ROTA", "<:centenriorota:1480792799614992496>"),
+    
     ("LÁUREA 5°", "<:lurea5:1481619463840333845>"),
     ("LÁUREA 4°", "<:lurea4:1481619742757224478>"),
     ("LÁUREA 3°", "<:lurea3:1481619849133424690>"),
@@ -101,14 +102,9 @@ def pegar_dados(embed):
 
 async def pegar_ficha(thread):
 
-    async def pegar_ficha(thread):
-
-    mensagens = [msg async for msg in thread.history(limit=1, oldest_first=True)]
-
-    if mensagens and mensagens[0].embeds:
-        return mensagens[0]
-
-    return None
+    async for msg in thread.history(limit=1, oldest_first=True):
+        if msg.embeds:
+            return msg
         
 class SituacaoSelect(discord.ui.Select):
 
@@ -569,30 +565,28 @@ async def editar_historico(self, interaction: discord.Interaction, button: disco
     )        
 
 
-async def on_submit(self, interaction: discord.Interaction):
+class CriarFichaModal(discord.ui.Modal, title="Criar ficha"):
 
-    await interaction.response.defer(ephemeral=True)
+    nome = discord.ui.TextInput(label="Nome")
+    registro = discord.ui.TextInput(label="Registro")
+    foto = discord.ui.TextInput(label="Foto")
 
-    canal = bot.get_channel(FORUM_CHANNEL_ID)
+    async def on_submit(self, interaction: discord.Interaction):
 
-    embed = criar_embed(
-        self.nome.value,
-        "Recruta",
-        self.registro.value,
-        "Efetivo",
-        self.foto.value
-    )
+        canal = bot.get_channel(FORUM_CHANNEL_ID)
 
-    thread = await canal.create_thread(
-        name=f"{self.nome.value} • {self.registro.value}",
-        embed=embed,
-        view=FichaView()
-    )
+        embed = criar_embed(self.nome.value, "Recruta", self.registro.value, "Efetivo", self.foto.value)
 
-    await interaction.followup.send(
-        f"Ficha criada: {thread.thread.mention}",
-        ephemeral=True
-    )
+        thread = await canal.create_thread(
+            name=f"{self.nome.value} • {self.registro.value}",
+            embed=embed,
+            view=FichaView()
+        )
+
+        await interaction.response.send_message(
+            f"Ficha criada: {thread.thread.mention}",
+            ephemeral=True
+        )
 
 
 class PainelView(discord.ui.View):
