@@ -45,11 +45,11 @@ PATENTES = [
 
 MEDALHAS = [
     ("MEDALHA DE ROTA", "<:medalhaderota:1480792877192708290>"),
-    ("CENTENARIO DE ROTA", "<:centenriorota:1480792799614992496>",)
-    ("LÁUREA 5°", "<:lurea5:1481619463840333845> ",)
-    ("LÁUREA 4°", "<:lurea4:1481619742757224478> ",)
-    ("LÁUREA 3°", "<:lurea3:1481619849133424690> ",)
-    ("LÁUREA 2°", "<:lurea2:1481619935745806426> ",)
+    ("CENTENARIO DE ROTA", "<:centenriorota:1480792799614992496>"),
+    ("LÁUREA 5°", "<:lurea5:1481619463840333845>"),
+    ("LÁUREA 4°", "<:lurea4:1481619742757224478>"),
+    ("LÁUREA 3°", "<:lurea3:1481619849133424690>"),
+    ("LÁUREA 2°", "<:lurea2:1481619935745806426>"),
     ("LÁUREA 1°", "<:lurea1:1481620008650932347>")
 ]
 
