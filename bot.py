@@ -101,9 +101,14 @@ def pegar_dados(embed):
 
 async def pegar_ficha(thread):
 
-    async for msg in thread.history(limit=1, oldest_first=True):
-        if msg.embeds:
-            return msg
+    async def pegar_ficha(thread):
+
+    mensagens = [msg async for msg in thread.history(limit=1, oldest_first=True)]
+
+    if mensagens and mensagens[0].embeds:
+        return mensagens[0]
+
+    return None
         
 class SituacaoSelect(discord.ui.Select):
 
@@ -564,28 +569,30 @@ async def editar_historico(self, interaction: discord.Interaction, button: disco
     )        
 
 
-class CriarFichaModal(discord.ui.Modal, title="Criar ficha"):
+async def on_submit(self, interaction: discord.Interaction):
 
-    nome = discord.ui.TextInput(label="Nome")
-    registro = discord.ui.TextInput(label="Registro")
-    foto = discord.ui.TextInput(label="Foto")
+    await interaction.response.defer(ephemeral=True)
 
-    async def on_submit(self, interaction: discord.Interaction):
+    canal = bot.get_channel(FORUM_CHANNEL_ID)
 
-        canal = bot.get_channel(FORUM_CHANNEL_ID)
+    embed = criar_embed(
+        self.nome.value,
+        "Recruta",
+        self.registro.value,
+        "Efetivo",
+        self.foto.value
+    )
 
-        embed = criar_embed(self.nome.value, "Recruta", self.registro.value, "Efetivo", self.foto.value)
+    thread = await canal.create_thread(
+        name=f"{self.nome.value} • {self.registro.value}",
+        embed=embed,
+        view=FichaView()
+    )
 
-        thread = await canal.create_thread(
-            name=f"{self.nome.value} • {self.registro.value}",
-            embed=embed,
-            view=FichaView()
-        )
-
-        await interaction.response.send_message(
-            f"Ficha criada: {thread.thread.mention}",
-            ephemeral=True
-        )
+    await interaction.followup.send(
+        f"Ficha criada: {thread.thread.mention}",
+        ephemeral=True
+    )
 
 
 class PainelView(discord.ui.View):
