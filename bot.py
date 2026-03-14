@@ -254,22 +254,18 @@ class RemoverMedalhaSelect(discord.ui.Select):
         atuais = embed.fields[5].value.split("\n")
         options = []
 
-        for medalha in atuais:
-            if medalha != "Nenhuma":
+        for i, medalha in enumerate(medalhas):
+            options.append(
+                discord.SelectOption(
+                    label=medalha,
+                    value=f"remover_{i}"
+                )
+            )
 
-                for nome, emoji in MEDALHAS:
-                    if nome in medalha:
-                        options.append(
-                            discord.SelectOption(
-                                label=nome,
-                                emoji=emoji
-                            )
-                        )
-
-        super().__init__(
-            placeholder="Remover medalha",
-            options=options
-        )
+            super().__init__(
+                placeholder="Remover medalha",
+                options=options
+            )
 
     async def callback(self, interaction: discord.Interaction):
 
