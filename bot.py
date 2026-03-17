@@ -485,7 +485,7 @@ class FichaView(discord.ui.View):
 
         await interaction.response.send_message(view=PatenteView(), ephemeral=True)
 
-    @discord.ui.button(label="Medalha", style=discord.ButtonStyle.gray, custom_id="medalha")
+    @discord.ui.button(label="Medalha", style=discord.ButtonStyle.green, custom_id="medalha")
     async def medalha(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         mensagem = await pegar_ficha(interaction.channel)
@@ -495,7 +495,7 @@ class FichaView(discord.ui.View):
             ephemeral=True
         )
 
-    @discord.ui.button(label="Curso", style=discord.ButtonStyle.gray, custom_id="curso")
+    @discord.ui.button(label="Curso", style=discord.ButtonStyle.green, custom_id="curso")
     async def curso(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         mensagem = await pegar_ficha(interaction.channel)
@@ -505,17 +505,17 @@ class FichaView(discord.ui.View):
             ephemeral=True
         )
 
-    @discord.ui.button(label="Histórico", style=discord.ButtonStyle.gray, custom_id="historico")
+    @discord.ui.button(label="Histórico", style=discord.ButtonStyle.green, custom_id="historico")
     async def historico(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         await interaction.response.send_modal(HistoricoModal())
 
-    @discord.ui.button(label="Editar", style=discord.ButtonStyle.gray, custom_id="editar")
+    @discord.ui.button(label="Editar", style=discord.ButtonStyle.green, custom_id="editar")
     async def editar(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         await interaction.response.send_modal(EditarModal())
 
-    @discord.ui.button(label="Situação", style=discord.ButtonStyle.gray, custom_id="situacao")
+    @discord.ui.button(label="Situação", style=discord.ButtonStyle.green, custom_id="situacao")
     async def situacao(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         await interaction.response.send_message(
@@ -523,7 +523,7 @@ class FichaView(discord.ui.View):
             ephemeral=True
         )
 
-    @discord.ui.button(label="Remover Medalha", style=discord.ButtonStyle.gray, custom_id="remover_medalha")
+    @discord.ui.button(label="Remover Medalha", style=discord.ButtonStyle.red, custom_id="remover_medalha")
     async def remover_medalha(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         mensagem = await pegar_ficha(interaction.channel)
@@ -533,7 +533,7 @@ class FichaView(discord.ui.View):
             ephemeral=True
         )
 
-    @discord.ui.button(label="Remover Curso", style=discord.ButtonStyle.gray, custom_id="remover_curso")
+    @discord.ui.button(label="Remover Curso", style=discord.ButtonStyle.red, custom_id="remover_curso")
     async def remover_curso(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         mensagem = await pegar_ficha(interaction.channel)
@@ -543,14 +543,14 @@ class FichaView(discord.ui.View):
             ephemeral=True
         )
 
-    @discord.ui.button(label="Editar Histórico", style=discord.ButtonStyle.gray, custom_id="editar_historico")
+    @discord.ui.button(label="Editar Histórico", style=discord.ButtonStyle.red, custom_id="editar_historico")
     async def editar_historico(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         await interaction.response.send_modal(
             EditarHistoricoModal()
         )
 
-@discord.ui.button(label="Remover Curso", style=discord.ButtonStyle.gray, custom_id="remover_curso")
+@discord.ui.button(label="Remover Curso", style=discord.ButtonStyle.red, custom_id="remover_curso")
 async def remover_curso(self, interaction: discord.Interaction, button: discord.ui.Button):
 
     mensagem = await pegar_ficha(interaction.channel)
@@ -561,7 +561,7 @@ async def remover_curso(self, interaction: discord.Interaction, button: discord.
     )
 
 
-@discord.ui.button(label="Editar Histórico", style=discord.ButtonStyle.gray, custom_id="editar_historico")
+@discord.ui.button(label="Editar Histórico", style=discord.ButtonStyle.red, custom_id="editar_historico")
 async def editar_historico(self, interaction: discord.Interaction, button: discord.ui.Button):
 
     await interaction.response.send_modal(
