@@ -564,7 +564,7 @@ class FichaView(discord.ui.View):
         )
 
     @discord.ui.button(
-        label="Remover Medalha",
+        label="Medalha",
         emoji=EMOJIS["remover"],
         style=discord.ButtonStyle.red,
         custom_id="remover_medalha"
@@ -579,7 +579,7 @@ class FichaView(discord.ui.View):
         )
 
     @discord.ui.button(
-        label="Remover Curso",
+        label="Curso",
         emoji=EMOJIS["remover"],
         style=discord.ButtonStyle.red,
         custom_id="remover_curso"
