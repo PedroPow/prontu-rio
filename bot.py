@@ -22,13 +22,13 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 TOKEN = os.getenv("TOKEN")  # coloque TOKEN no .env
 
 EMOJIS = {
-    ("patente": "<:check:1483308987742158950>"),
-    ("medalha": "<:check:1483308987742158950>"),
-    ("curso": "<:check:1483308987742158950>"),
-    ("historico": "<:check:1483308987742158950>"),
-    ("editar": "<:check:1483308987742158950>"),
-    ("situacao": "<:check:1483308987742158950>"),
-    ("remover": "<:x_:1483309103085256724>")
+    "patente": "<:check:1483308987742158950>",
+    "medalha": "<:check:1483308987742158950>",
+    "curso": "<:check:1483308987742158950>",
+    "historico": "<:check:1483308987742158950>",
+    "editar": "<:check:1483308987742158950>",
+    "situacao": "<:check:1483308987742158950>",
+    "remover": "<:x_:1483309103085256724>"
 }
 
 SITUACOES = [
