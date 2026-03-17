@@ -533,7 +533,7 @@ class FichaView(discord.ui.View):
             ephemeral=True
         )
 
-    @discord.ui.button(label="Remover Curso", style=discord.ButtonStyle.red, custom_id="remover_curso")
+    @discord.ui.button(label="Remover Curso", style=discord.ButtonStyle.red, emoji="<:lurea1:1481620008650932347>" custom_id="remover_curso")
     async def remover_curso(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         mensagem = await pegar_ficha(interaction.channel)
