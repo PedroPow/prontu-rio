@@ -3,7 +3,7 @@ from discord.ext import commands
 from datetime import datetime
 import os
 
-TOKEN = "MTM3MDYzMDA2NDg1MjU3MDE2Mg.Gzb6wL.iEe-419I_NYzpvYmvajlsyqRJblycyllXd3KUw"
+TOKEN = "MTM3MDYzMDA2NDg1MjU3MDE2Mg.GMWX1k.g7nlHxtRlV19SbwSihbTH4OkFvez1QSEFWsc5g"
 
 FORUM_CHANNEL_ID = 1480373719846359131
 
@@ -19,7 +19,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 # ============================
 # TOKEN
 # ============================
-TOKEN = os.getenv("TOKEN")  # coloque TOKEN no .env
+
 
 EMOJIS = {
     "patente": "<:check:1483308987742158950>",
