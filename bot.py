@@ -3,7 +3,7 @@ from discord.ext import commands
 from datetime import datetime
 import os
 
-TOKEN = "MTM3MDYzMDA2NDg1MjU3MDE2Mg.GMWX1k.g7nlHxtRlV19SbwSihbTH4OkFvez1QSEFWsc5g"
+TOKEN = os.getenv("TOKEN_ROTA")  # Substitua pelo token do seu bot
 
 FORUM_CHANNEL_ID = 1480373719846359131
 
